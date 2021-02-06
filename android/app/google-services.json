@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1013517656141",
+    "project_id": "blood-donation-f7023",
+    "storage_bucket": "blood-donation-f7023.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1013517656141:android:0adce2c8e067c86018fc04",
+        "android_client_info": {
+          "package_name": "com.bloodbank"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1013517656141-pmbs3nd3gup0doqroc64705kvgep50bo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bloodbank",
+            "certificate_hash": "9c8f103391294999e679f4b2e41b6d3a758222a6"
+          }
+        },
+        {
+          "client_id": "1013517656141-k2befn4fo1obhhg1j9e78vuoj2nqa21f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJ1KviizFAAmyBQhlSUHbHlGSRA2EV_eo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1013517656141-k2befn4fo1obhhg1j9e78vuoj2nqa21f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
