@@ -1,7 +1,7 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import CardShowcase from '../components/Card';
+import CardShowcase from '../components/card';
 import {StyleSheet, View, Text, StatusBar, Pressable} from 'react-native';
 import {connect} from 'react-redux';
 const HomeScreen = (props) => {
@@ -17,7 +17,8 @@ const HomeScreen = (props) => {
             onPress={() => props.navigation.openDrawer()}>
             <Icon name="text" size={24} color="black" />
           </Pressable>
-          <CardShowcase></CardShowcase>
+
+          {/* <CardShowcase></CardShowcase> */}
         </View>
       </SafeAreaView>
     </>

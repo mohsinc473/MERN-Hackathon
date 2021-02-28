@@ -10,13 +10,13 @@ import React, {useState, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {StyleSheet, StatusBar, View} from 'react-native';
+import {StatusBar} from 'react-native';
 import {GoogleSignin} from '@react-native-community/google-signin';
 
 import DummyScreen from './screens/Dummy';
 import LoginPage from './screens/LoginPage';
 import SignUpScreen from './screens/Signup';
-import OnBoardingScreen from './screens/OnBoarding';
+import FormikForm from './screens/form';
 
 import store from './redux-config/store';
 import {Provider} from 'react-redux';
@@ -40,8 +40,8 @@ const App = () => {
               screenOptions={{
                 headerShown: false,
               }}>
-              <Stack.Screen name="Onboarding" component={OnBoardingScreen} />
               <Stack.Screen name="Login" component={LoginPage} />
+              <Stack.Screen name="Form" component={FormikForm} />
               <Stack.Screen name="Signup" component={SignUpScreen} />
               <Stack.Screen name="Dummy" component={DummyScreen} />
             </Stack.Navigator>

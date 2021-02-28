@@ -7,8 +7,16 @@ import {
   StatusBar,
   Image,
   Pressable,
+  Alert,
 } from 'react-native';
-const CardShowcase = () => {
+import auth from '@react-native-firebase/auth';
+
+const CardShowcase = (props) => {
+  const logout = () => {
+    auth()
+      .signOut()
+      .then(() => console.log('User signed out!'));
+  };
   //   console.log('Navi=>', navigation);
   return (
     <>
@@ -22,6 +30,9 @@ const CardShowcase = () => {
             />
             <Text style={styles.userName}>Mohsin</Text>
           </View>
+          <Pressable onPress={() => logout} style={{padding: 20}}>
+            <Text>Logout</Text>
+          </Pressable>
         </View>
       </SafeAreaView>
     </>

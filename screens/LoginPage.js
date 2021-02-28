@@ -1,77 +1,3 @@
-// import React from 'react';
-// import {SafeAreaView} from 'react-native-safe-area-context';
-// import {
-//   //   SafeAreaView,
-//   StyleSheet,
-//   View,
-//   Text,
-//   StatusBar,
-//   Image,
-//   ImageBackground,
-//   Pressable,
-// } from 'react-native';
-
-// const LoginPage = ({navigation}) => {
-//   // console.log('Navig=>', navigation);
-//   return (
-//     <>
-//       <StatusBar barStyle="dark-content" />
-//       <SafeAreaView>
-//         <View>
-//           <ImageBackground
-//             blurRadius={1}
-//             source={require('../Images/bg-2.jpg')}
-//             style={styles.LoginAreaImg}>
-//             <Pressable
-//               activeOpacity={0.8}
-//               style={styles.googleBtn}
-//               onPress={() => navigation.navigate('Dummy')}>
-//               <Image
-//                 style={styles.googleImg}
-//                 source={require('../Images/icon-google.png')}
-//               />
-//               <Text style={styles.googleBtnText}>Continue with google</Text>
-//             </Pressable>
-//           </ImageBackground>
-//         </View>
-//       </SafeAreaView>
-//     </>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   LoginAreaImg: {
-//     width: '100%',
-//     height: '100%',
-//     resizeMode: 'cover',
-//     display: 'flex',
-//     justifyContent: 'flex-end',
-//   },
-//   googleBtn: {
-//     backgroundColor: '#370617',
-//     width: '80%',
-//     marginBottom: 100,
-//     padding: 5,
-//     // display: 'flex',
-//     flexDirection: 'row',
-//     justifyContent: 'space-around',
-//     alignItems: 'center',
-//     borderRadius: 5,
-//   },
-//   googleImg: {
-//     width: 30,
-//     height: 30,
-//     borderRadius: 15,
-//   },
-//   googleBtnText: {
-//     color: '#edf6f9',
-//     fontSize: 15,
-//     fontFamily: 'serif',
-//   },
-// });
-
-// export default LoginPage;
-
 import React from 'react';
 import {
   View,
@@ -93,12 +19,6 @@ import {bindActionCreators} from 'redux';
 import {loginWithEmail, signupWithEmail} from '../redux-config/funcs';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-community/google-signin';
-
-// import { useTheme } from 'react-native-paper';
-
-// import { AuthContext } from '../components/context';
-
-// import Users from '../model/users';
 
 const SignInScreen = (props) => {
   // console.log('LoginProp', props);
@@ -248,7 +168,7 @@ const SignInScreen = (props) => {
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor="#009387" barStyle="light-content" />
+      <StatusBar backgroundColor="#e93347" barStyle="light-content" />
       <View style={styles.header}>
         <Animatable.Text
           animation="slideInLeft"
@@ -257,14 +177,7 @@ const SignInScreen = (props) => {
           Welcome!
         </Animatable.Text>
       </View>
-      <Animatable.View
-        animation="fadeInUpBig"
-        style={[
-          styles.footer,
-          {
-            backgroundColor: '#7ac2ae',
-          },
-        ]}>
+      <Animatable.View animation="fadeInUpBig" style={styles.footer}>
         <Text
           style={[
             styles.text_footer,
@@ -277,7 +190,7 @@ const SignInScreen = (props) => {
         <View style={styles.action}>
           <FontAwesome name="user-o" color={'black'} size={20} />
           <TextInput
-            placeholder="Your Username"
+            placeholder="Your email"
             placeholderTextColor="#666666"
             style={[
               styles.textInput,
@@ -358,29 +271,8 @@ const SignInScreen = (props) => {
                 borderWidth: 1,
               },
             ]}
-            onPress={() => LoginEmail(data.username, data.password)}>
-            <Text
-              style={[
-                styles.textSign,
-                {
-                  color: '#fff',
-                },
-              ]}>
-              Sign In
-            </Text>
-          </TouchableOpacity>
-
-          {/* <TouchableOpacity
-            // onPress={() => navigation.navigate('Dummy')}
-            onPress={SignUp}
-            style={[
-              styles.signIn,
-              {
-                borderColor: '#009387',
-                borderWidth: 1,
-                marginTop: 15,
-              },
-            ]}>
+            // onPress={() => LoginEmail(data.username, data.password)}
+            onPress={() => props.navigation.navigate('Form')}>
             <Text
               style={[
                 styles.textSign,
@@ -388,14 +280,14 @@ const SignInScreen = (props) => {
                   color: '#009387',
                 },
               ]}>
-              Sign Up
+              Sign In
             </Text>
-          </TouchableOpacity> */}
+          </TouchableOpacity>
           <TouchableOpacity
             style={styles.forgotButton}
             onPress={() => props.navigation.navigate('Signup')}>
             <Text style={styles.navButtonText}>
-              Don't have an acount? Create here
+              Click here to read about authorization
             </Text>
           </TouchableOpacity>
         </View>
@@ -417,7 +309,7 @@ const SignInScreen = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#009387',
+    backgroundColor: '#e93347',
   },
   header: {
     flex: 1,
@@ -427,7 +319,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 6,
-    backgroundColor: '#fff',
+    backgroundColor: '#ced4da',
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     paddingHorizontal: 20,
@@ -485,8 +377,8 @@ const styles = StyleSheet.create({
     marginVertical: 35,
   },
   navButtonText: {
-    fontSize: 18,
-    fontWeight: '500',
+    fontSize: 16,
+    fontWeight: 'bold',
     color: '#283618',
     fontFamily: 'Lato-Regular',
   },
