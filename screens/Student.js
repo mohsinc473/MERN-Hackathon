@@ -1,24 +1,16 @@
 import React, {useEffect} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import StudentInfoCard from '../components/card';
-import {
-  StyleSheet,
-  View,
-  StatusBar,
-  ActivityIndicator,
-  Pressable,
-} from 'react-native';
+import {StyleSheet, View, StatusBar, ActivityIndicator} from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {FirestoreStudentData} from '../redux-config/funcs';
 import {ScrollView} from 'react-native-gesture-handler';
 
-const HomeScreen = ({students, ...props}) => {
+const StudentScreen = ({students, ...props}) => {
   useEffect(() => {
     props.FirestoreStudentData();
   }, []);
-
   console.log('Stds=>', props);
   // console.log('props=>', props);
   return (
@@ -27,16 +19,10 @@ const HomeScreen = ({students, ...props}) => {
       <SafeAreaView>
         <ScrollView>
           <View>
-            <Pressable
-              style={styles.HamBurger}
-              onPress={() => props.navigation.openDrawer()}>
-              <Icon name="text" size={24} color="black" />
-            </Pressable>
-
             {students ? (
-              students.map((stud) => (
+              students.map((stud, index) => (
                 <>
-                  <StudentInfoCard key={stud.id} students={stud} />
+                  <StudentInfoCard key={index} students={stud} />
                 </>
               ))
             ) : (
@@ -68,4 +54,4 @@ const mapDispatchToProps = (dispatch) =>
     dispatch,
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(StudentScreen);

@@ -11,8 +11,8 @@ const DummyScreen = () => {
   return (
     <>
       <Drawer.Navigator drawerType={'front'}>
-        <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="About" component={AboutScreen} />
+        <Drawer.Screen name="Students" component={HomeScreen} />
+        <Drawer.Screen name="Company" component={AboutScreen} />
       </Drawer.Navigator>
     </>
   );

@@ -1,5 +1,6 @@
 import React from 'react';
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 export const loginWithEmail = (email, password) => {
   auth()
@@ -41,6 +42,44 @@ export const logout = () => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const FirestoreStudentData = () => {
+  return (dispatch) => {
+    firestore()
+      .collection('students')
+      .get()
+      .then((querySnapshot) => {
+        // console.log('Total users: ', querySnapshot.size);
+        querySnapshot.forEach((documentSnapshot) => {
+          dispatch({type: 'getFirestoreData', data: documentSnapshot});
+          console.log(
+            'User ID: ',
+            documentSnapshot.id,
+            documentSnapshot.data(),
+          );
+        });
+      });
+  };
+};
+
+export const FirestoreCompanyData = () => {
+  return (dispatch) => {
+    firestore()
+      .collection('company')
+      .get()
+      .then((querySnapshot) => {
+        // console.log('Total users: ', querySnapshot.size);
+        querySnapshot.forEach((documentSnapshot) => {
+          dispatch({type: 'getFirestoreCompData', data: documentSnapshot});
+          // console.log(
+          //   'User ID: ',
+          //   documentSnapshot.id,
+          //   documentSnapshot.data(),
+          // );
+        });
+      });
+  };
 };
 
 // const facebookLogin = () => {

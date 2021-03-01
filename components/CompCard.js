@@ -3,8 +3,8 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {StyleSheet, View, Text, StatusBar, Image} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
-const StudentInfoCard = ({students}) => {
-  // console.log('Navi=>', students);
+const CompanyInfoCard = ({company}) => {
+  // console.log('Navi=>', company);
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -19,18 +19,18 @@ const StudentInfoCard = ({students}) => {
             <View style={styles.cardHeader}>
               <Image
                 style={styles.UserImg}
-                source={{uri: `${students.data().imageURL}`}}
+                source={{uri: `${company.data().imageURL}`}}
               />
               <Text numberOfLines={1} style={styles.userName}>
-                {students.data().name}
+                {company.data().name}
               </Text>
             </View>
-            <Text style={styles.Stutext}>E-mail: {students.data().email}</Text>
+            <Text style={styles.Stutext}>Type: {company.data().type}</Text>
             <Text style={styles.Stutext}>
-              Contact No: {students.data().phoneNumber}
+              Contact No: {company.data().contactNumber}
             </Text>
             <Text style={styles.Stutext}>
-              Bachelor's Degree: {students.data().bsDegree}
+              Address: {company.data().address}
             </Text>
           </Animatable.View>
         </View>
@@ -78,4 +78,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default StudentInfoCard;
+export default CompanyInfoCard;

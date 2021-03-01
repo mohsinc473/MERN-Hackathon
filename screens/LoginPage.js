@@ -119,7 +119,7 @@ const SignInScreen = (props) => {
         .signInWithEmailAndPassword(email, password)
         .then((user) => {
           UserNode = user;
-          console.log('signed in!', user);
+          console.log('signed in!', user.email);
         })
         .catch((error) => {
           if (error.code === 'auth/invalid-email') {
@@ -132,7 +132,16 @@ const SignInScreen = (props) => {
           console.error(error);
         });
 
-      UserNode ? props.navigation.navigate('Dummy') : ErrorAlert(err);
+      if (UserNode && UserNode.user.email === 'adminauth2020@gmail.com') {
+        props.navigation.navigate('Dummy');
+      } else if (
+        UserNode &&
+        UserNode.user.email === 'companyauth2020@gmail.com'
+      ) {
+        props.navigation.navigate('Students');
+      } else {
+        ErrorAlert(err);
+      }
     }
   };
 
@@ -144,9 +153,10 @@ const SignInScreen = (props) => {
 
     // Sign-in the user with the credential
     const UserData = await auth().signInWithCredential(googleCredential);
-    console.log('Data->', UserData);
+    // console.log('Data->', UserData);
     if (UserData) {
-      props.navigation.navigate('Dummy');
+      // props.navigation.navigate('Companies');
+      props.navigation.navigate('Form', {profile: UserData.user.photoURL});
     }
   };
 
@@ -271,8 +281,8 @@ const SignInScreen = (props) => {
                 borderWidth: 1,
               },
             ]}
-            // onPress={() => LoginEmail(data.username, data.password)}
-            onPress={() => props.navigation.navigate('Form')}>
+            onPress={() => LoginEmail(data.username, data.password)}>
+            {/* onPress={() => props.navigation.navigate('Dummy')} */}
             <Text
               style={[
                 styles.textSign,
